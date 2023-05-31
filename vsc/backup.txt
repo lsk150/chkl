@@ -1,0 +1,18 @@
+const { MongoClient } = require("mongodb");
+
+// Replace <username>, <password>, <host>, and <database> with the appropriate values
+const uri = "mongodb+srv://nekow:nekow@elaina.5gk5p.mongodb.net/test";
+
+(async () => {
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  await client.connect();
+
+  // Get a reference to the collection
+  const collection = client.db("mydatabase").collection("trigger_connection");
+
+  // Query the collection
+  const data = await collection.find({}).toArray();
+
+  // Return the data
+  console.log(data.value);
+})();
